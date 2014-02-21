@@ -32,7 +32,7 @@ define([], function(){
 		},
 
 		addObject: function(){
-			var dto = this.model.getShapeDTO(this.$el.find("#new-drawing-form").serializeArray());
+			var dto = this.model.getShapeDTO(this.$el.find("#new-shape-form").serializeArray());
 			this.model.addObject(dto);
 		},
 

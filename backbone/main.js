@@ -3,7 +3,9 @@ require.config({
 		apps: '../backbone/apps',
 		drawing: '../backbone/apps/drawing',
 		models: '../backbone/entities',
-		appEvents: '../backbone/apps/events/appEvents'
+		appEvents: '../backbone/messaging/events/appEvents',
+		requestHandler: '../backbone/messaging/request/requestHandler',
+		components: '../backbone/components'
 	}
 })
 require(['apps/app'], function(AppView){

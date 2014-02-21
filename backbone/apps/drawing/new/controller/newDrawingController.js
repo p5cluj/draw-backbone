@@ -1,5 +1,5 @@
-define(['drawing/new/view/NewDrawingForm','drawing/new/controller/newShapeController', 'models/shape', 'models/drawing', 'appEvents'], 
-	function(NewDrawingForm, newShapeController, Shape, Drawing, appEvents){
+define(['drawing/new/view/NewDrawingForm','drawing/new/controller/newShapeController', 'models/shape', 'models/drawing', 'components/dialog/previewDialog', 'appEvents'], 
+	function(NewDrawingForm, newShapeController, Shape, Drawing, previewDialog, appEvents){
 		var newDrawingController = Backbone.Model.extend({
 			initialize: function(params){
 				this.view = new NewDrawingForm({el: params.el, model: this});				
@@ -14,7 +14,8 @@ define(['drawing/new/view/NewDrawingForm','drawing/new/controller/newShapeContro
 			},
 
 			previewDrawing: function(){
-				console.log(this.drawing);
+				console.log(this.drawing.toJSON());
+				this.previewDialog = new previewDialog({drawing: this.drawing, mode:'canvas'});
 			},
 
 			destroyView: function(){
