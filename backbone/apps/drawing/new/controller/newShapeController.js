@@ -1,8 +1,8 @@
-define(['drawing/new/view/newShapeView', 'models/shape', 'models/drawing', 'appEvents'], 
-	function(newShapeView, Shape, Drawing, appEvents){
+define(['drawing/new/view/newShapeForm', 'models/shape', 'models/drawing', 'appEvents'], 
+	function(newShapeForm, Shape, Drawing, appEvents){
 		var newShapeController = Backbone.Model.extend({
 			initialize: function(params){
-				this.view = new newShapeView({el: params.el, model: this, shape: params.shape});
+				this.view = new newShapeForm({el: params.el, model: this, shape: params.shape});
 				this.shape = params.shape;
 				this.drawing = params.drawing;
 			},
