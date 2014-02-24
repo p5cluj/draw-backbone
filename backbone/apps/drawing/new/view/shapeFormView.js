@@ -1,20 +1,24 @@
 define([], function(){
-	var newShapeForm = Backbone.View.extend({
+	var shapeFormView = Backbone.View.extend({
 
 		initialize: function(params){
 			this.shape = params.shape;
 			this.$el = $(params.el);
 			this.render();
-			this.model.on('destroy', this.destroy);
+			this.initializeEventListeners();
 		},
 
 		render: function(){
-			this.loadTemplate();
+			this.loadTemplate();			
+		},
+
+		initializeEventListeners: function(){
 			var self = this;
 			$(".addObject").on('click', function(e){
 				e.preventDefault();
 				self.addObject();
-			})
+			});
+			this.model.on('destroy', this.destroy);
 		},
 
 		loadTemplate: function(){
@@ -31,9 +35,8 @@ define([], function(){
 			this.$el.append(this.template);
 		},
 
-		addObject: function(){
-			var dto = this.model.getShapeDTO(this.$el.find("#new-shape-form").serializeArray());
-			this.model.addObject(dto);
+		addObject: function(){			
+			this.model.addObject(this.$el.find("#new-shape-form").serializeArray());
 		},
 
 		destroy: function(){
@@ -41,5 +44,5 @@ define([], function(){
 			delete this;
 		}
 	});
-	return newShapeForm;
+	return shapeFormView;
 })

@@ -1,6 +1,6 @@
 define(['drawing/open/view/openDrawingView', 'appEvents'], 
 	function(openDrawingView, appEvents){
-		var openDrawingController = Backbone.Model.extend({
+		var openDrawingModel = Backbone.Model.extend({
 			initialize: function(params){
 				this.view = new openDrawingView({el: params.el, model: this})
 			},
@@ -14,5 +14,5 @@ define(['drawing/open/view/openDrawingView', 'appEvents'],
 				appEvents.trigger('reset');
 			}
 		});
-		return openDrawingController;
+		return openDrawingModel;
 });
